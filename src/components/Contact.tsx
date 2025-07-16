@@ -76,13 +76,13 @@ const Contact = () => {
   ];
 
   return (
-    <section className="bg-black py-20">
+    <section className="bg-white py-20">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-6">Get In Touch</h2>
-            <div className="w-24 h-1 bg-white mx-auto"></div>
-            <p className="text-gray-400 mt-6 text-lg">
+            <h2 className="text-5xl font-bold text-black mb-6">Get In Touch</h2>
+            <div className="w-24 h-1 bg-black mx-auto"></div>
+            <p className="text-gray-700 mt-6 text-lg">
               Let's connect and discuss opportunities to collaborate
             </p>
           </div>
@@ -90,7 +90,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
-              <div className="bg-gray-900 p-8 rounded-xl">
+              <div className="bg-black p-8 rounded-xl border border-gray-800">
                 <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
@@ -103,8 +103,8 @@ const Contact = () => {
                         <info.icon className="w-6 h-6 text-black" />
                       </div>
                       <div>
-                        <h4 className="font-semibold">{info.label}</h4>
-                        <p className="text-sm">{info.value}</p>
+                        <h4 className="font-semibold text-white">{info.label}</h4>
+                        <p className="text-sm text-gray-300">{info.value}</p>
                       </div>
                     </a>
                   ))}
@@ -112,7 +112,7 @@ const Contact = () => {
               </div>
 
               {/* Social Links */}
-              <div className="bg-gray-900 p-8 rounded-xl">
+              <div className="bg-black p-8 rounded-xl border border-gray-800">
                 <h3 className="text-2xl font-bold text-white mb-6">Follow Me</h3>
                 <div className="flex space-x-6">
                   {socialLinks.map((social, index) => (
@@ -127,15 +127,15 @@ const Contact = () => {
                     </a>
                   ))}
                 </div>
-                <p className="text-gray-400 mt-4 text-sm">
+                <p className="text-gray-300 mt-4 text-sm">
                   Connect with me on social media for updates and insights
                 </p>
               </div>
 
               {/* Availability */}
-              <div className="bg-white p-8 rounded-xl text-black">
+              <div className="bg-black p-8 rounded-xl border border-gray-800 text-white">
                 <h3 className="text-2xl font-bold mb-4">Availability</h3>
-                <div className="space-y-2 text-gray-700">
+                <div className="space-y-2 text-gray-300">
                   <p>✅ Open to internship opportunities</p>
                   <p>✅ Available for freelance projects</p>
                   <p>✅ Interested in collaboration</p>
@@ -145,11 +145,11 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 rounded-xl">
-              <h3 className="text-2xl font-bold text-black mb-6">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="bg-black p-12 rounded-xl border border-gray-800 flex flex-col justify-center min-h-full">
+              <h3 className="text-4xl font-extrabold text-white mb-8">Send a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-2">
                     Your Name
                   </label>
                   <div className="relative">
@@ -161,14 +161,14 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-white focus:border-transparent"
                       placeholder="Enter your name"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
                     Email Address
                   </label>
                   <div className="relative">
@@ -180,14 +180,14 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-white focus:border-transparent"
                       placeholder="Enter your email"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-2">
                     Message
                   </label>
                   <div className="relative">
@@ -197,9 +197,9 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      rows={5}
+                      rows={8}
                       required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent resize-none"
+                      className="w-full min-h-[160px] pl-10 pr-4 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-white focus:border-transparent resize-none"
                       placeholder="Tell me about your project or just say hi!"
                     />
                   </div>
@@ -207,7 +207,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-black text-white py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center justify-center space-x-2 transform hover:scale-105"
+                  className="w-full bg-white text-black py-4 rounded-lg font-bold text-lg hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2 transform hover:scale-105 mt-4"
                 >
                   <Send className="w-5 h-5" />
                   <span>Send Message</span>

@@ -26,6 +26,26 @@ const Projects = () => {
       demoUrl: 'https://github.com/Tarunaasdev03/borrosmart#readme'
     },
     {
+      title: 'Linuxssh Dashboard',
+      description: 'A dashboard for managing Linux SSH connections and commands.',
+      category: 'automation',
+      technologies: ['Linux', 'SSH', 'Dashboard'],
+      icon: Cog,
+      details: 'Manage and automate SSH connections to Linux servers from a single dashboard.',
+      githubUrl: 'https://github.com/Tarunaasdev03/Linuxssh.git',
+      demoUrl: 'https://github.com/Tarunaasdev03/Linuxssh#readme'
+    },
+    {
+      title: 'JavaScript Projects',
+      description: 'A collection of JavaScript projects and experiments.',
+      category: 'web',
+      technologies: ['JavaScript', 'Web'],
+      icon: Camera,
+      details: 'Various JavaScript-based projects and code samples.',
+      githubUrl: 'https://github.com/Tarunaasdev03/javascript-.git',
+      demoUrl: 'https://github.com/Tarunaasdev03/javascript-#readme'
+    },
+    {
       title: 'Communication Automation Suite',
       description: 'Automated email, SMS, WhatsApp, call, and social media posting system',
       category: 'automation',
@@ -34,38 +54,6 @@ const Projects = () => {
       details: 'Complete automation for Email, SMS, WhatsApp, LinkedIn, Twitter, Facebook, Instagram',
       githubUrl: 'https://github.com/Tarunaasdev03/pytasks.git',
       demoUrl: 'https://github.com/Tarunaasdev03/pytasks#readme'
-    },
-    {
-      title: 'Docker GUI & Sound Access',
-      description: 'Linux command exploration with GUI and sound access in Docker containers',
-      category: 'docker',
-      technologies: ['Docker', 'Linux', 'GUI'],
-      icon: Cog,
-      details: 'Advanced Docker containerization with GUI and audio capabilities'
-    },
-    {
-      title: 'Git Workflow Manager',
-      description: 'Complete GitHub workflow automation including init, commit, push, branch, and PR management',
-      category: 'automation',
-      technologies: ['Git', 'GitHub', 'Python', 'CLI'],
-      icon: Github,
-      details: 'Comprehensive GitHub task automation for efficient development workflows'
-    },
-    {
-      title: 'JavaScript Media Capture',
-      description: 'Web-based webcam capture, video processing, and email integration',
-      category: 'web',
-      technologies: ['JavaScript', 'WebRTC', 'HTML5'],
-      icon: Camera,
-      details: 'Real-time media capture with processing and communication features'
-    },
-    {
-      title: 'ML Model Docker Deployment',
-      description: 'Running machine learning models and applications in Docker containers',
-      category: 'docker',
-      technologies: ['Docker', 'ML', 'Python'],
-      icon: Cog,
-      details: 'Scalable ML model deployment using containerization'
     },
     {
       title: 'Unified Task Menu System',
@@ -82,14 +70,6 @@ const Projects = () => {
       technologies: ['Streamlit', 'Gradio', 'Python'],
       icon: Cog,
       details: 'User-friendly web interfaces for automation control'
-    },
-    {
-      title: 'Video Call Integration',
-      description: 'Automated video calling system with scheduling and management',
-      category: 'automation',
-      technologies: ['Python', 'APIs', 'WebRTC'],
-      icon: Video,
-      details: 'Complete video communication automation system'
     }
   ];
 

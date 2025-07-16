@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, Linkedin, Github, MapPin, Send, Heart } from 'lucide-react';
+// If you haven't installed emailjs-com, run: npm install emailjs-com
+import emailjs from 'emailjs-com';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,10 +12,25 @@ const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    // Send email using EmailJS
+    emailjs.send(
+      'YOUR_SERVICE_ID',
+      'YOUR_TEMPLATE_ID',
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message
+      },
+      'YOUR_USER_ID'
+    )
+      .then(() => {
+        alert('Thank you for your message! I\'ll get back to you soon.');
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((error: unknown) => {
+        alert('Failed to send message. Please try again later.');
+        console.error('EmailJS error:', error);
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -55,14 +72,14 @@ const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-6">
+    <section id="contact" className="bg-white py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#ccd1d1] mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
             Get In Touch
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8"></div>
-          <p className="text-xl text-[#ccd1d1]/80 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
             Ready to collaborate? Let's discuss your next project or opportunity
           </p>
         </div>
@@ -71,7 +88,7 @@ const ContactSection: React.FC = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-[#ccd1d1] mb-6">
+              <h3 className="text-2xl font-bold text-black mb-6">
                 Contact Information
               </h3>
               <div className="space-y-4">
@@ -81,14 +98,14 @@ const ContactSection: React.FC = () => {
                     href={item.href}
                     target={item.label === 'LinkedIn' || item.label === 'GitHub' ? '_blank' : undefined}
                     rel={item.label === 'LinkedIn' || item.label === 'GitHub' ? 'noopener noreferrer' : undefined}
-                    className="flex items-center space-x-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 group"
+                    className="flex items-center space-x-4 p-4 bg-white rounded-xl border border-gray-200 hover:bg-gray-100 transition-all duration-300 hover:scale-105 group"
                   >
                     <div className={`p-3 rounded-lg bg-gradient-to-r ${item.color} text-white`}>
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-[#ccd1d1]/60 text-sm">{item.label}</p>
-                      <p className="text-[#ccd1d1] font-medium group-hover:text-blue-400 transition-colors">
+                      <p className="text-gray-500 text-sm">{item.label}</p>
+                      <p className="text-black font-medium group-hover:text-blue-400 transition-colors">
                         {item.value}
                       </p>
                     </div>
@@ -98,30 +115,30 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Location */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="p-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 text-white">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-[#ccd1d1]">Location</h4>
-                  <p className="text-[#ccd1d1]/80">Bikaner, Rajasthan, India</p>
+                  <h4 className="text-lg font-semibold text-black mb-2">Location</h4>
+                  <p className="text-gray-700">Bikaner, Rajasthan, India</p>
                 </div>
               </div>
-              <p className="text-[#ccd1d1]/60 text-sm">
+              <p className="text-gray-500 text-sm">
                 Currently available for remote work and local opportunities
               </p>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-[#ccd1d1] mb-6">
+          <div className="bg-white rounded-xl p-8 border border-gray-200">
+            <h3 className="text-2xl font-bold text-black mb-6">
               Send Me a Message
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-[#ccd1d1] mb-2">
+                <label htmlFor="name" className="block text-black mb-2">
                   Your Name
                 </label>
                 <input
@@ -131,12 +148,12 @@ const ContactSection: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-[#ccd1d1] placeholder-[#ccd1d1]/50 focus:border-blue-400 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
                   placeholder="Enter your name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-[#ccd1d1] mb-2">
+                <label htmlFor="email" className="block text-black mb-2">
                   Your Email
                 </label>
                 <input
@@ -146,12 +163,12 @@ const ContactSection: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-[#ccd1d1] placeholder-[#ccd1d1]/50 focus:border-blue-400 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
                   placeholder="Enter your email"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-[#ccd1d1] mb-2">
+                <label htmlFor="message" className="block text-black mb-2">
                   Your Message
                 </label>
                 <textarea
@@ -160,8 +177,8 @@ const ContactSection: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-[#ccd1d1] placeholder-[#ccd1d1]/50 focus:border-blue-400 focus:outline-none transition-colors resize-none"
+                  rows={4}
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors resize-none"
                   placeholder="Tell me about your project or just say hi!"
                 />
               </div>
@@ -175,9 +192,8 @@ const ContactSection: React.FC = () => {
             </form>
           </div>
         </div>
-
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-white/10 text-center">
+        <div className="mt-8 pt-8 border-t border-white/10 text-center">
           <p className="text-[#ccd1d1]/60 flex items-center justify-center space-x-2">
             <span>Made with</span>
             <Heart className="w-4 h-4 text-red-400" />
